@@ -1,0 +1,28 @@
+# ELT Pipeline - Docker Compose
+# Usage: docker compose up -d --build
+# Dashboard: docker compose run --service-ports app streamlit run src/app/dashboard.py
+
+services:
+  pipeline:
+    build: .
+    image: elt-pipeline:latest
+    env_file: .env
+    volumes:
+      - ./data:/app/data
+    command: >
+      sh -c "python -m src.ingestion.main && python -m src.transformation.main"
+    restart: "no"
+
+  app:
+    build: .
+    image: elt-pipeline:latest
+    env_file: .env
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "8501:8501"
+    command: streamlit run src/app/dashboard.py --server.port=8501 --server.address=0.0.0.0
+    depends_on:
+      - pipeline
+    profiles:
+      - dashboard

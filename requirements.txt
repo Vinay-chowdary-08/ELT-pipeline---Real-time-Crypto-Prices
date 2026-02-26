@@ -1,0 +1,20 @@
+# ELT Pipeline - Real-time Crypto Prices
+# Install: pip install -r requirements.txt  OR  uv pip install -r requirements.txt
+
+# Core
+polars>=0.20.0
+duckdb>=0.10.0
+pyarrow>=14.0.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# App
+streamlit>=1.29.0
+
+# Scripts (figures for README)
+matplotlib>=3.7.0
+
+# Dev and quality
+pytest>=7.4.0
+pytest-cov>=4.1.0
+ruff>=0.2.0
