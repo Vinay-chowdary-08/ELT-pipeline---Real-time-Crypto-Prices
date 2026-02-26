@@ -174,3 +174,4 @@ duckdb data/crypto_prices.duckdb "SELECT id, symbol, current_price, market_cap_r
 ## 📜 License
 
 MIT
+# ELT-pipeline---Real-time-Crypto-Prices
